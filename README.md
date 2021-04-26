@@ -4,4 +4,4 @@
 
 ## Architecture Diagram
 
-![infrastructure] (diagram/infra_back.jpg)
+![infrastructure] (./diagram/infra_back.jpg)
