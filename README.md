@@ -21,5 +21,8 @@ Make sure you have the latest version of the following before deploying.
 ## 2. Deploy the infrastructure.
 
 ```
-
+cd back/infra
+terraform init
+terraform plan -out=tfplan
+terraform apply "tfplan"
 ```
