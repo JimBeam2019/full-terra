@@ -1,3 +1,9 @@
+# API Gateway
+output "this_apigatewayv2_api_endpoint" {
+  description = "The URI of the API"
+  value       = module.api_gateway_v2.this_apigatewayv2_api_api_endpoint
+}
+
 # aws_rds_cluster
 output "this_rds_cluster_id" {
   description = "The ID of the cluster"
