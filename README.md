@@ -8,7 +8,7 @@
 
 ## Prerequisite
 Make sure you have the latest version of the following before deploying.
-- `npm` or `yarn`
+- `npm` and `yarn`
 - `aws cli`
 - `terraform`
 - `git`
@@ -27,4 +27,10 @@ cd back/infra
 terraform init
 terraform plan -out=tfplan
 terraform apply "tfplan"
+```
+
+## 3. Destroy the infrastructure
+
+```
+terraform destroy
 ```
