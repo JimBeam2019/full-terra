@@ -18,12 +18,12 @@ Make sure you have the latest version of the following before deploying.
 # Steps
 ## 1. Provide values of variables
 
-At the `back/infra` directory, create a `terraform.tfvars` file following the example file `terraform.tfvars.example`, and fill the **account_id** with the AWS account ID as well as set up **db_username** and **db_password** for database username and password.
+At the `back/infra_raw` directory, create a `terraform.tfvars` file following the example file `terraform.tfvars.example`, and fill the **account_id** with the AWS account ID as well as set up **db_username** and **db_password** for database username and password.
 
 ## 2. Deploy the infrastructure.
 
 ```
-cd back/infra
+cd back/infra_raw
 terraform init
 terraform plan -out=tfplan
 terraform apply "tfplan"
