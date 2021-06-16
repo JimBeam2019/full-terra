@@ -13,10 +13,13 @@ stages:          # List of stages for jobs, and their order of execution
   - test
   - deploy
 
+variables:
+  BUILD_JOB: build
+
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
-    - echo "Compiling the code..."
+    - echo "Compiling the ${BUILD_JOB} code..."
     - echo "Compile complete."
 
 unit-test-job:   # This job runs in the test stage.
@@ -38,3 +41,4 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
+    - exit 0
