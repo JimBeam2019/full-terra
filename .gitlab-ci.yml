@@ -20,12 +20,13 @@ cache:
 before_script:
   - cd back
 
-test_async:
+test:
   script:
     - npm install
-    - node ./specs/start.js ./specs/async.spec.js
+    - node ./index.js
+    # - node ./specs/start.js ./specs/async.spec.js
 
-test_db:
-  script:
-    - npm install
-    - node ./specs/start.js ./specs/db-postgres.spec.js
+# test_db:
+#   script:
+#     - npm install
+#     - node ./specs/start.js ./specs/db-postgres.spec.js
