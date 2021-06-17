@@ -22,27 +22,27 @@ before_script:
 
 stages:
   - uni_test
-  - audit_scan
+  - sec_scan
   # - build
 
 unit-test:
   stage: uni_test
   script:
     - yarn install
-    - yarn run test
+    - yarn run unit-test
     # - npm install
     # - node ./index.js
     # - node ./specs/start.js ./specs/async.spec.js
 
-yarn-audit:
-  stage: audit_scan
-  script:
-    - yarn audit
+# yarn-audit:
+#   stage: audit_scan
+#   script:
+#     - yarn audit
 
 snyk-scan:
-  stage: audit_scan
+  stage: sec_scan
   script:
-    - yarn install -g snyk
+    - yarn global add snyk
     - snyk test
 
 # test_db:

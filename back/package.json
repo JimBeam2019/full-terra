@@ -12,14 +12,16 @@
   "private": true,
   "scripts": {
     "start": "babel-watch index.js",
-    "test": "jest",
+    "test": "snyk test",
+    "unit-test": "yarn audit && jest",
     "eslint": "eslint --ext js src --fix",
     "prod-init-handler": "rm -rf ./build/init/ && yarn install --modules-folder=./build/init/node_modules --production=true",
     "cp-init-code": "cp ./src/handlerInit.js ./build/init/index.js && cp -r ./src/model/ ./build/init/model/ && cp -r ./sql/ ./build/init/sql/",
     "pack-init-handler": "yarn run prod-init-handler && yarn run eslint && yarn run cp-init-code && cd ./build/init && zip -r index.zip .",
     "prod-get-member-handler": "rm -rf ./build/get_member/ && yarn install --modules-folder=./build/get_member/node_modules --production=true",
     "cp-get-member-code": "cp ./src/handlerGetMember.js ./build/get_member/index.js && cp -r ./src/model/ ./build/get_member/model/",
-    "pack-get-member-handler": "yarn run prod-get-member-handler && yarn run cp-get-member-code && cd ./build/get_member && zip -r index.zip ."
+    "pack-get-member-handler": "yarn run prod-get-member-handler && yarn run cp-get-member-code && cd ./build/get_member && zip -r index.zip .",
+    "snyk-protect": "snyk protect"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -42,7 +44,8 @@
     "eslint-plugin-promise": "^5.1.0",
     "express": "^4.17.1",
     "jest": "^27.0.4",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "snyk": "^1.634.0"
   },
   "jest": {
     "verbose": true,
