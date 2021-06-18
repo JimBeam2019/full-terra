@@ -26,6 +26,7 @@ before_script:
 stages:
   - uni_test
   - sec_scan
+  - test
   # - build
 
 unit-test:
