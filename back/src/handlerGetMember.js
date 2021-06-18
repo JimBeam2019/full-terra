@@ -1,6 +1,6 @@
-const Pg = require("./model/Pg");
+const Pg = require('./model/Pg');
 
-require("dotenv").config();
+require('dotenv').config();
 
 exports.handler = (event, context, callback) => {
   const newPg = new Pg(

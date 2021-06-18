@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const express = require("express");
-const fs = require("fs");
-const path = require("path");
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
 
-const Pg = require("../model/Pg");
+const Pg = require('../model/Pg');
 
-require("dotenv").config();
+require('dotenv').config();
 
 /**
  *
@@ -25,7 +25,7 @@ class PgRoute {
 
   runPg() {
     // http://localhost:4200/pg/members
-    this.route.get("/members", async (req, res) => {
+    this.route.get('/members', async (req, res) => {
       const newPg = new Pg(
         process.env.PGHOST,
         process.env.PGPORT,
@@ -45,8 +45,8 @@ class PgRoute {
     });
 
     // http://localhost:4200/pg/init
-    this.route.get("/init", async (req, res) => {
-      const sqlFile = path.join(process.cwd(), "/sql/init.sql");
+    this.route.get('/init', async (req, res) => {
+      const sqlFile = path.join(process.cwd(), '/sql/init.sql');
 
       const sqlScript = fs.readFileSync(sqlFile).toString();
 

@@ -1,4 +1,4 @@
-const { Pool } = require("pg");
+const { Pool } = require('pg');
 
 /**
  *
@@ -39,7 +39,7 @@ class Pg {
     });
 
     return pool
-      .query("SELECT * FROM members;")
+      .query('SELECT * FROM members;')
       .then((res) => {
         pool.end();
 

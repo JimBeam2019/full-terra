@@ -1,12 +1,12 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const Pg = require("./model/Pg");
+const Pg = require('./model/Pg');
 
-require("dotenv").config();
+require('dotenv').config();
 
 exports.handler = (event, context, callback) => {
-  const sqlFile = path.join(process.cwd(), "/sql/init.sql");
+  const sqlFile = path.join(process.cwd(), '/sql/init.sql');
 
   const sqlScript = fs.readFileSync(sqlFile).toString();
 

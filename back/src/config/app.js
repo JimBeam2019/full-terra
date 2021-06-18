@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const express = require("express");
+const express = require('express');
 
-const PgRoute = require("../route/PgRoute");
+const PgRoute = require('../route/PgRoute');
 
 /**
  *
@@ -29,7 +29,7 @@ class App {
 
     const pgRoute = new PgRoute().route;
 
-    this.app.use("/pg", pgRoute);
+    this.app.use('/pg', pgRoute);
   }
 }
 
