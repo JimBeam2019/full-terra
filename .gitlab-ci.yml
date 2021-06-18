@@ -47,8 +47,9 @@ sast:
       pmd-apex, security-code-scan, sobelow, spotbugs
     CI_DEBUG_TRACE: "true"
   artifacts:
-    reports:
-      sast: gl-sast-report.json
+    paths:
+      - gl-sast-report.json
+    expire_in: 1 week
 
 dependency_scanning:
   stage: test
@@ -60,6 +61,15 @@ dast:
   variables:
     DAST_WEBSITE: http://notes.tanuki.host/
     DAST_FULL_SCAN_ENABLED: "true"
+
+secret_detection:
+  stage: test
+  variables:
+    SECRET_DETECTION_HISTORIC_SCAN: "true"
+  artifacts:
+    paths:
+      - gl-secret-detection-report.json
+    expire_in: 1 week
 
 # yarn-audit:
 #   stage: audit_scan
