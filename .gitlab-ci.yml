@@ -25,7 +25,7 @@ before_script:
 
 stages:
   - uni_test
-  - sec_scan
+  # - sec_scan
   - test
   # - build
 
@@ -43,11 +43,11 @@ unit-test:
 #   script:
 #     - yarn audit
 
-snyk-scan:
-  stage: sec_scan
-  script:
-    - yarn global add snyk
-    - snyk test
+# snyk-scan:
+#   stage: sec_scan
+#   script:
+#     - yarn global add snyk
+#     - snyk test
 
 # test_db:
 #   script:
