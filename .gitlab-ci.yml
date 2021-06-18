@@ -1,7 +1,7 @@
 # This file is a template, and might need editing before it works on your project.
 # Official framework image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/node/tags/
-image: node:latest
+image: node:14
 
 # Pick zero or more services to be used on all builds.
 # Only needed when using a docker container to run your tests in.
@@ -13,6 +13,10 @@ services:
 
 include:
   - template: Security/SAST.gitlab-ci.yml
+  - template: Dependency-Scanning.gitlab-ci.yml
+  - template: License-Scanning.gitlab-ci.yml
+  - template: DAST.gitlab-ci.yml
+  - template: Secret-Detection.gitlab-ci.yml
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ee/ci/yaml/README.html#cache
@@ -26,17 +30,34 @@ before_script:
 stages:
   - uni_test
   # - sec_scan
-  - test
   # - build
+  - test
+  - dast
 
 unit-test:
   stage: uni_test
   script:
     - yarn install
     - yarn run unit-test
-    # - npm install
-    # - node ./index.js
-    # - node ./specs/start.js ./specs/async.spec.js
+
+sast:
+  stage: test
+  variables:
+    CI_DEBUG_TRACE: "true"
+  artifacts:
+    reports:
+      sast: gl-sast-report.json
+
+dependency_scanning:
+  stage: test
+  variables:
+    CI_DEBUG_TRACE: "true"
+
+dast:
+  stage: dast
+  variables:
+    DAST_WEBSITE: http://notes.tanuki.host/
+    DAST_FULL_SCAN_ENABLED: "true"
 
 # yarn-audit:
 #   stage: audit_scan
@@ -48,11 +69,6 @@ unit-test:
 #   script:
 #     - yarn global add snyk
 #     - snyk test
-
-# test_db:
-#   script:
-#     - npm install
-#     - node ./specs/start.js ./specs/db-postgres.spec.js
 
 # build:
 #   stage: build
